@@ -58,15 +58,16 @@
 
 {{ partial "meta/theme-color" . }}
 
-{{/*  Ionic  */}}
+{{/*  Material Design  */}}
 <link
   rel="stylesheet"
   type="text/css"
-  href="https://unpkg.com/@ionic/core@4.0.0-beta.16/css/ionic.bundle.css"
+  href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
 />
-<script src="https://unpkg.com/@ionic/core@4.0.0-beta.16/dist/ionic.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
 {{/*  Cookie Consent  */}}
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js" defer></script>
 <script>
 window.addEventListener("load", function(){
