@@ -1,52 +1,48 @@
-<ion-menu style="border:none;">
-  <ion-header>
-    <ion-toolbar color="primary"> <ion-title>Menu</ion-title> </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      <ion-menu-toggle auto-hide="false">
+<header class="mdc-top-app-bar app-bar" id="app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon"><i class="fas fa-bars"></i></a>
+      <span class="mdc-top-app-bar__title"></span>
+    </section>
+  </div>
+</header>
+<aside class="mdc-drawer mdc-drawer--dismissible">
+    <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">Menu</h3>
+      </div>
+  <div class="mdc-drawer__content">
+    <div class="mdc-list">
         {{ $currentPage := . }} {{ range.Site.Menus.main }}
-        <ion-item button href="{{ .URL }}">
-          <ion-icon slot="start" name="{{ .Pre }}" color="primary"></ion-icon>
-          <ion-label> {{ .Name }} </ion-label>
-        </ion-item>
+            <a class="mdc-list-item mdc-list-item--activated" href="{{ .URL }}" aria-selected="true">
+              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">{{ .Pre }}</i>
+              <span class="mdc-list-item__text">{{ .Name }}</span>
+            </a>
         {{ end }}
-      </ion-menu-toggle>
-      <ion-row justify-content-center>
-          {{/*  {{ if not .IsHome }}  */}}
-          {{ with $.Site.Params.home }}
-            {{ if or (isset . "showgithub") (isset . "showtwitter") (isset . "showyoutube") (isset . "showslack") }}
-                    {{ if and (isset . "showgithub") (isset $.Site.Params "github") }}
-                        <ion-button class="ajonp-github" href="https://github.com/{{ $.Site.Params.github }}">
-                            <i class="fab fa-github fa-lg"></i>
-                        </ion-button>
-                    {{ end }}
-                    {{ if and (isset . "showtwitter") (isset $.Site.Params "twitter") }}
-                        <ion-button class="ajonp-twitter" href="https://twitter.com/{{ $.Site.Params.twitter }}">
-                            <i class="fab fa-twitter fa-lg"></i>
-                        </ion-button>
-                    {{ end }}
-                    {{ if and (isset . "showslack") (isset $.Site.Params "slack") }}
-                        <ion-button class="ajonp-slack" href="https://{{ $.Site.Params.slack }}.slack.com">
-                            <i class="fab fa-slack fa-lg"></i>
-                        </ion-button>
-                    {{ end }}
-                    {{ if and (isset . "showyoutube") (isset $.Site.Params "youtube") }}
-                        <ion-button class="ajonp-youtube" href="https://www.youtube.com/channel/{{ $.Site.Params.youtube | absURL }}">
-                            <i class="fab fa-youtube fa-lg"></i>
-                        </ion-button>
-                    {{ end }}
+    </div>
+    {{ with $.Site.Params.home }}
+    {{ if or (isset . "showgithub") (isset . "showtwitter") (isset . "showyoutube") (isset . "showslack") }}
+            {{ if and (isset . "showgithub") (isset $.Site.Params "github") }}
+                <button class="mdc-button--raised" aria-label="GitHub" class="ajonp-github" href="https://github.com/{{ $.Site.Params.github }}">
+                    <i class="fab fa-github fa-2x"></i>
+                </button>
             {{ end }}
-        {{ end }}
-      {{/*  {{ end }}  */}}
-      </ion-row>
-    </ion-list>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{.Title}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content> {{ partial "toc" .}} </ion-card-content>
-    </ion-card>
-  </ion-content>
-</ion-menu>
+            {{ if and (isset . "showtwitter") (isset $.Site.Params "twitter") }}
+                <button class="mdc-button--raised" aria-label="GitHub" class="ajonp-twitter"  href="https://twitter.com/{{ $.Site.Params.twitter }}">
+                  <i class="fab fa-twitter fa-2x"></i>
+              </button>
+            {{ end }}
+            {{ if and (isset . "showslack") (isset $.Site.Params "slack") }}
+                <button class="mdc-button--raised" aria-label="GitHub" class="ajonp-slack"  href="https://{{ $.Site.Params.slack }}.slack.com">
+                  <i class="fab fa-slack fa-2x"></i>
+              </button>
+            {{ end }}
+            {{ if and (isset . "showyoutube") (isset $.Site.Params "youtube") }}
+                <button class="mdc-button--raised" aria-label="GitHub" class="ajonp-slack" href="https://www.youtube.com/channel/{{ $.Site.Params.youtube | absURL }}">
+                  <i class="fab fa-youtube fa-2x"></i>
+              </button>
+            {{ end }}
+          {{ end }}
+      {{ end }}
+    {{ partial "toc" .}}
+  </div>
+</aside>

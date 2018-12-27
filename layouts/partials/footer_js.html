@@ -101,3 +101,14 @@
   {{ with .Site.Params.addthis }}
   {{ partial "addthis_js" . }}
   {{ end }}
+  
+  {{/* Material */}}
+  <script>
+    const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+    const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+    const list = mdc.list.MDCList.attachTo(document.querySelector('.mdc-list'));
+    topAppBar.setScrollTarget(document.getElementById('main-content'));
+    topAppBar.listen('MDCTopAppBar:nav', () => {
+      drawer.open = !drawer.open;
+    });
+  </script>
