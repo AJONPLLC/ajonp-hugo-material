@@ -11,6 +11,12 @@
         appId: "{{ .appid }}",
         apiKey: "{{ .apikey }}",
         indexName: "{{ .indexname }}",
+        searchFunction: function(helper) {
+        if (helper.state.query === '') {
+          return;
+        }
+          helper.search();
+        },
         //routing: true,
         searchFunction(helper) {
           if (helper.state.query === '') {
